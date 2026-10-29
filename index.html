@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Física Interativa - Espectro Eletromagnético</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Espectro Eletromagnético</h1>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#espectro">Espectro</a>
+            <a href="#diferencas">Diferenças</a>
+            <a href="#ressonancia">Medicina Diagnóstica</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <h2>O que são ondas eletromagnéticas?</h2>
+            <p>
+                São ondas formadas pela oscilação de campos elétricos e magnéticos que transportam energia. 
+                Elas não precisam de um meio material para se propagar, podendo viajar através do vácuo a 
+                aproximadamente 300.000 km/s ($3 \times 10^8 \text{ m/s}$).
+            </p>
+            <p><strong>Equação Fundamental da Onda:</strong> \( c = \lambda \cdot f \)</p>
+            <p><em>(Onde <strong>c</strong> é a velocidade da luz, <strong>&lambda;</strong> é o comprimento de onda e <strong>f</strong> é a frequência. Quanto maior a frequência, menor o comprimento de onda e maior a energia).</em></p>
+        </section>
+
+        <section id="espectro">
+            <h2>Conheça o Espectro Eletromagnético</h2>
+            <p>Clique em qualquer parte do espectro ou nos botões para abrir os detalhes!</p>
+
+            <!-- Banner Visual do Espectro -->
+            <div class="espectro-visual-container">
+                <div class="espectro-icones">
+                    <div class="icone-item" onclick="mostrarOnda(0)">
+                        <span class="emoji-icone">📻</span>
+                        <span class="label-icone">ONDAS DE RÁDIO</span>
+                    </div>
+                    <div class="icone-item" onclick="mostrarOnda(1)">
+                        <span class="emoji-icone">📻</span>
+                        <span class="label-icone">MICRO-ONDAS</span>
+                    </div>
+                    <div class="icone-item" onclick="mostrarOnda(2)">
+                        <span class="emoji-icone">📟</span>
+                        <span class="label-icone">INFRAVERMELHO</span>
+                    </div>
+                    <div class="icone-item" onclick="mostrarOnda(3)">
+                        <span class="emoji-icone">💡</span>
+                        <span class="label-icone">LUZ VISÍVEL</span>
+                    </div>
+                    <div class="icone-item" onclick="mostrarOnda(4)">
+                        <span class="emoji-icone">☀️</span>
+                        <span class="label-icone">ULTRAVIOLETA</span>
+                    </div>
+                    <div class="icone-item" onclick="mostrarOnda(5)">
+                        <span class="emoji-icone">🦴</span>
+                        <span class="label-icone">RAIOS X</span>
+                    </div>
+                    <div class="icone-item" onclick="mostrarOnda(6)">
+                        <span class="emoji-icone">☢️</span>
+                        <span class="label-icone">RAIOS GAMA</span>
+                    </div>
+                </div>
+
+                <!-- Desenho da Onda Sinusoidal em SVG -->
+                <div class="barra-espectro-gradient">
+                    <svg class="onda-svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                        <path d="M 0 50 Q 30 10, 60 50 T 120 50 T 180 50 T 240 50 T 300 50 T 360 50 Q 380 20, 400 50 Q 420 80, 440 50 Q 460 20, 480 50 Q 500 80, 520 50 Q 535 25, 550 50 Q 565 75, 580 50 Q 595 25, 610 50 Q 625 75, 640 50 Q 655 25, 670 50 Q 685 75, 700 50 Q 710 30, 720 50 Q 730 70, 740 50 Q 750 30, 760 50 Q 770 70, 780 50 Q 790 30, 800 50 Q 808 35, 816 50 Q 824 65, 832 50 Q 840 35, 848 50 Q 856 65, 864 50 Q 872 35, 880 50 Q 885 38, 890 50 Q 895 62, 900 50 Q 905 38, 910 50 Q 915 62, 920 50 Q 925 38, 930 50 L 1000 50" 
+                              fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <div class="guia-espectro-visivel">
+                    <div class="linha-guia esquerda"></div>
+                    <div class="linha-guia direita"></div>
+                </div>
+
+                <div class="barra-espectro-visivel" onclick="mostrarOnda(3)">
+                    <span>ESPECTRO VISÍVEL</span>
+                </div>
+
+                <div class="regua-comprimento">
+                    <span class="seta-regua">←</span>
+                    <div class="valores-regua">
+                        <span>100 km</span>
+                        <span>1 mm</span>
+                        <span>700 nm</span>
+                        <span>400 nm</span>
+                        <span>10 nm</span>
+                        <span>0,0005 Nanômetros</span>
+                    </div>
+                    <span class="seta-regua">→</span>
+                </div>
+            </div>
+
+            <div class="ondas">
+                <button onclick="mostrarOnda(0)">Rádio</button>
+                <button onclick="mostrarOnda(1)">Micro-ondas</button>
+                <button onclick="mostrarOnda(2)">Infravermelho</button>
+                <button onclick="mostrarOnda(3)">Luz Visível</button>
+                <button onclick="mostrarOnda(4)">Ultravioleta</button>
+                <button onclick="mostrarOnda(5)">Raios X</button>
+                <button onclick="mostrarOnda(6)">Raios Gama</button>
+            </div>
+
+            <p class="frequencia-legenda">← Menor frequência | Maior frequência →</p>
+
+            <!-- Overlay Escuro e Pop-up Modal -->
+            <div id="modalOverlay" onclick="fecharOnda()"></div>
+            <div id="informacoes">
+                <h3 id="nomeOnda"></h3>
+                <p id="frequencia"></p>
+                <p id="comprimento"></p>
+                <p id="descricao"></p>
+                <p id="exemplo"></p>
+                <div class="img-container">
+                    <img id="imagemOnda" alt="Ilustração da onda">
+                </div>
+                <button class="btn-fechar" onclick="fecharOnda()">Fechar</button>
+            </div>
+        </section>
+
+        <section id="diferencas">
+            <h2>Ondas Eletromagnéticas vs. Mecânicas</h2>
+
+            <div class="comparacao">
+                <div class="card-comparacao eletromagneticas">
+                    <h3>Ondas Eletromagnéticas</h3>
+                    <ul>
+                        <li><strong>Meio:</strong> Não necessitam de meio material (propagam-se no vácuo).</li>
+                        <li><strong>Origem:</strong> Cargas elétricas aceleradas.</li>
+                        <li><strong>Velocidade:</strong> Atingem a velocidade da luz ($3 \times 10^8\text{ m/s}$).</li>
+                        <li><strong>Exemplos:</strong> Luz, sinais de Wi-Fi, raios X e ondas de rádio.</li>
+                    </ul>
+                </div>
+
+                <div class="card-comparacao mecanicas">
+                    <h3>Ondas Mecânicas</h3>
+                    <ul>
+                        <li><strong>Meio:</strong> Necessitam obrigatoriamente de um meio material (sólido, líquido ou gasoso).</li>
+                        <li><strong>Origem:</strong> Vibrações mecânicas da matéria.</li>
+                        <li><strong>Velocidade:</strong> Mais lentas (dependem da densidade do meio).</li>
+                        <li><strong>Exemplos:</strong> Som, ondas no mar, tremores sísmicos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="ressonancia">
+            <h2>Medicina Diagnóstica: Ressonância vs. Tomografia</h2>
+
+            <div class="comparacao-medica">
+                <div class="card-medico">
+                    <h3>Ressonância Magnética (RM)</h3>
+                    <img src="images/ressonancia.jpg" alt="Aparelho de Ressonância Magnética" class="img-medicina">
+                    <p><strong>Tipo de Onda:</strong> Campos Magnéticos Intensos + Ondas de Rádio (Não ionizante).</p>
+                    <p><strong>Princípio Físico:</strong> O campo magnético alinha os prótons de hidrogênio do corpo. Pulsações de rádio os excitam; ao retornarem ao estado inicial, emitem sinais captados pelo computador.</p>
+                    <p><strong>Indicação:</strong> Músculos, cérebro, tecidos moles, articulações e ligamentos.</p>
+                </div>
+
+                <div class="card-medico">
+                    <h3>Tomografia Computadorizada (TC)</h3>
+                    <img src="images/tomografia.jpg" alt="Diagrama de Tomografia Computadorizada" class="img-medicina">
+                    <p><strong>Tipo de Onda:</strong> Raios X (Radiação Ionizante de Alta Frequência).</p>
+                    <p><strong>Princípio Físico:</strong> O equipamento roda 360° ao redor do paciente, emitindo feixes de radiação. Detectores medem a atenuação do feixe através de tecidos com diferentes densidades.</p>
+                    <p><strong>Indicação:</strong> Estruturas ósseas, pulmões, fraturas complexas e sangramentos agudos.</p>
+                </div>
+            </div>
+
+            <div class="tabela-container">
+                <h3>Comparativo Científico de Exames</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Ressonância Magnética</th>
+                            <th>Tomografia Computadorizada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Radiação Utilizada</strong></td>
+                            <td>Ondas de Rádio + Campo Magnético</td>
+                            <td>Raios X (Ionizante)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Segurança</strong></td>
+                            <td>Sem radiação ionizante</td>
+                            <td>Requer proteção de chumbo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Especialidade</strong></td>
+                            <td>Tecidos moles e órgãos</td>
+                            <td>Ossos e estruturas densas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="nota-seguranca" style="margin-top: 20px;">
+                💡 <em><strong>Medidas de Segurança:</strong> Em Tomografia e Raios X é obrigatório o uso de avental de chumbo contra a radiação ionizante. Na Ressonância, é proibida a entrada de objetos metálicos devido ao forte campo magnético.</em>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Projeto de Física - Espectro Eletromagnético</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
